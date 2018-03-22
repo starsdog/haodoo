@@ -206,7 +206,7 @@ if __name__=="__main__":
     5. download book_link
     '''
     if task=='generate_book_page_links':
-        #parser.download_index_html(project_config['target_link'])
+        parser.download_index_html(project_config['target_link'])
         folder_path=os.path.join(project_dir, 'index_html')
         parser.parse_index_link_folder(folder_path)
     elif task=='generate_book_download_links':
