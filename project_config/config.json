@@ -1,0 +1,13 @@
+{
+    "target_link":[
+        {"title":"世紀百強", "link":"http://www.haodoo.net/?M=hd&P=100"},
+        {"title":"隨身智囊", "link":"http://www.haodoo.net/?M=hd&P=wisdom"},
+        {"title":"歷史煙雲", "link":"http://www.haodoo.net/?M=hd&P=history"},
+        {"title":"武俠小說", "link":"http://www.haodoo.net/?M=hd&P=martial"},
+        {"title":"懸疑小說", "link":"http://www.haodoo.net/?M=hd&P=mystery"},
+        {"title":"言情小說", "link":"http://www.haodoo.net/?M=hd&P=romance"},
+        {"title":"奇幻小說", "link":"http://www.haodoo.net/?M=hd&P=scifi"},
+        {"title":"小說園地", "link":"http://www.haodoo.net/?M=hd&P=fiction"},
+        {"title":"有聲書", "link":"http://www.haodoo.net/?M=hd&P=audio"},
+    ]
+}
