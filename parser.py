@@ -6,6 +6,7 @@ import os
 import json
 import argparse
 import time
+import codecs   
 
 class htmlParser(object):
     def __init__(self):
@@ -79,7 +80,7 @@ class htmlParser(object):
         output_folder=os.path.join(self.project_dir, 'book_link', title)
         self.check_folder(output_folder)
         output_path=os.path.join(output_folder, output_filename)
-        output_handler=open(output_path, 'w')
+        output_handler=codecs.open(output_path, 'w', encoding='utf-8')
         output_handler.write(json.dumps(book_link, ensure_ascii=False))
         output_handler.close()
             
@@ -112,7 +113,7 @@ class htmlParser(object):
         output_folder=os.path.join(self.project_dir, 'index_link', parent_foldername)
         self.check_folder(output_folder)
         output_path=os.path.join(output_folder, output_filename)
-        output_handler=open(output_path, 'w')
+        output_handler=codecs.open(output_path, 'w', encoding='utf-8')
         output_handler.write(json.dumps(index_link, ensure_ascii=False))
         output_handler.close()
                     
@@ -129,7 +130,7 @@ class htmlParser(object):
             for f in fileNames:  
                 if '.json' in f:
                     file_path="{}".format(os.path.join(dirPath, f))  
-                    input_handler=open(file_path,'r')
+                    input_handler=codecs.open(file_path,'r', encoding='utf-8')
                     content=json.load(input_handler)
                     for info in content:
                         title=info['title']
@@ -149,7 +150,7 @@ class htmlParser(object):
             for f in fileNames:  
                 if '.json' in f:
                     file_path="{}".format(os.path.join(dirPath, f))  
-                    input_handler=open(file_path,'r')
+                    input_handler=codesc.open(file_path,'r', encoding='utf-8')
                     content=json.load(input_handler)
                     book_title=os.path.basename(dirPath)
                     output_folder=os.path.join(self.project_dir, 'ebook', book_title)
@@ -193,7 +194,7 @@ if __name__=="__main__":
 
     project_dir = os.path.dirname(os.path.abspath(__file__))
     config_file = project_dir + '/project_config/config.json'
-    with open(config_file) as file:
+    with codecs.open(config_file , "r", encoding='utf-8') as file:
         project_config=json.load(file)
 
     parser=htmlParser()    
