@@ -150,7 +150,7 @@ class htmlParser(object):
             for f in fileNames:  
                 if '.json' in f:
                     file_path="{}".format(os.path.join(dirPath, f))  
-                    input_handler=codesc.open(file_path,'r', encoding='utf-8')
+                    input_handler=codecs.open(file_path,'r', encoding='utf-8')
                     content=json.load(input_handler)
                     book_title=os.path.basename(dirPath)
                     output_folder=os.path.join(self.project_dir, 'ebook', book_title)
