@@ -90,6 +90,7 @@ class htmlParser(object):
                 if '.html' in f:
                     file_path="{}".format(os.path.join(dirPath, f))  
                     title=os.path.basename(dirPath)
+                    print("正在找出{}的ebook連結...".format(title))
                     self.parse_book_link(file_path, title) 
 
     def parse_index_link(self, file_path, parent_foldername):
@@ -123,6 +124,7 @@ class htmlParser(object):
                 if '.html' in f:
                     file_path="{}".format(os.path.join(dirPath, f)) 
                     title=os.path.basename(dirPath) 
+                    print("正在找出{}目錄頁面裡的書籍下載連結...".format(title))
                     self.parse_index_link(file_path, title) 
     
     def download_book_html_fodler(self, file_path):
@@ -135,6 +137,7 @@ class htmlParser(object):
                     for info in content:
                         title=info['title']
                         link=info['link']
+                        print("正在下載{}書籍網頁...".format(title))
                         self.download_html(title, link, "book_html")
                         time.sleep(60)
 
@@ -142,6 +145,7 @@ class htmlParser(object):
         for info in target_links:
             title=info['title']
             link=info['link']
+            print("正在下載{}目錄頁面...".format(title))
             self.download_html(title, link, "index_html")
             time.sleep(60)
 
@@ -159,10 +163,11 @@ class htmlParser(object):
                         ebook_format=key
                         links=content[key]
                         for link in links:
+                            print("正在下載{} {}格式...".format(book_title, key))
                             r=requests.get(link, headers=self.header)
                             if r.status_code==200:
                                 link_part=link.split('/')
-                                filename="{}.{}".format(link_part[-1][1:], key)
+                                filename=link_part[-1][1:]
                                 output_file=os.path.join(output_folder, filename)
                                 output=open(output_file, "wb")
                                 output.write(r.content)
@@ -210,14 +215,17 @@ if __name__=="__main__":
         parser.download_index_html(project_config['target_link'])
         folder_path=os.path.join(project_dir, 'index_html')
         parser.parse_index_link_folder(folder_path)
+        print("步驟一完成!")
     elif task=='generate_book_download_links':
         folder_path=os.path.join(project_dir, 'index_link')
         parser.download_book_html_fodler(folder_path)
         folder_path=os.path.join(project_dir, 'book_html')
         parser.parse_book_link_folder(folder_path)
+        print("步驟二完成!")
     elif task=='download_book':
         folder_path=os.path.join(project_dir, 'book_link')
         parser.download_book_folder(folder_path)
+        print("步驟三完成!")
             
     
 
