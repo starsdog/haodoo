@@ -19,6 +19,10 @@
   ```
   pip3 install -r requirements.txt
   ```
+5. 離開virtualenv
+  ```
+  deactivate
+  ```
 
 # 使用方法
 
